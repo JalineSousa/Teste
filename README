@@ -1,0 +1,29 @@
+#coding: utf-8
+from should_dsl import should
+import unittest
+from banco import Conta
+
+class Test_ContaCorrente(unittest.TestCase):
+	
+	def test_conta(self):
+		pessoa=Conta("João", 001, 100)
+		pessoa._nome |should| equal_to ("João")
+		pessoa._num_conta |should| equal_to (001)
+		pessoa._saldo |should| equal_to (100)
+
+
+	def test_depositar(self):
+		pessoa=Conta("João", 001, 100)
+		pessoa.depositar(50)
+		pessoa._saldo |should| equal_to (150)
+
+
+	def test_sacar(self):
+		pessoa=Conta("João",001,100)
+		pessoa.sacar(50)
+		pessoa._saldo |should| equal_to (50)
+
+
+
+if __name__=='__main__':
+	unittest.main()
